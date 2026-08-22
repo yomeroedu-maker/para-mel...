@@ -60,96 +60,28 @@
             </p>
 
 
-            <!-- REPRODUCTOR -->
+            <!-- ========================= -->
+            <!-- SPOTIFY -->
+            <!-- ========================= -->
 
-            <div class="reproductor">
+            <div class="spotify-reproductor">
 
-                <div class="informacion-cancion">
-
-                    <div class="icono-musica">
-                        ♪
-                    </div>
-
-                    <div class="datos-cancion">
-
-                        <span id="nombreCancion">
-                            Qué Nivel de Mujer
-                        </span>
-
-                        <small>
-                            Luis Miguel
-                        </small>
-
-                    </div>
-
-                </div>
-
-
-                <!-- BARRA DE PROGRESO -->
-
-                <div class="progreso-contenedor">
-
-                    <span id="tiempoActual">
-                        0:00
-                    </span>
-
-                    <input
-                        type="range"
-                        id="barraProgreso"
-                        value="0"
-                        min="0"
-                        max="100"
-                    >
-
-                    <span id="duracion">
-                        0:00
-                    </span>
-
-                </div>
-
-
-                <!-- CONTROLES -->
-
-                <div class="controles">
-
-                    <button id="btnAnterior" class="control">
-                        ⏮
-                    </button>
-
-                    <button id="btnPlay" class="btn-play">
-                        ▶
-                    </button>
-
-                    <button id="btnSiguienteCancion" class="control">
-                        ⏭
-                    </button>
-
-                </div>
-
-
-                <!-- VOLUMEN -->
-
-                <div class="volumen">
-
-                    <span>
-                        🔊
-                    </span>
-
-                    <input
-                        type="range"
-                        id="volumen"
-                        min="0"
-                        max="1"
-                        step="0.01"
-                        value="0.8"
-                    >
-
-                </div>
+                <iframe
+                    id="spotifyPlayer"
+                    src="https://open.spotify.com/embed/track/4yakD6EKEjeMezENNCSlcc"
+                    width="100%"
+                    height="352"
+                    frameborder="0"
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    loading="lazy">
+                </iframe>
 
             </div>
 
 
+            <!-- ========================= -->
             <!-- LISTA DE CANCIONES -->
+            <!-- ========================= -->
 
             <div class="lista-contenedor">
 
@@ -214,12 +146,9 @@
     </main>
 
 
-    <!-- AUDIO -->
-
-    <audio id="audio"></audio>
-
-
+    <!-- ========================= -->
     <!-- JAVASCRIPT -->
+    <!-- ========================= -->
 
     <script src="script.js"></script>
 
