@@ -34,7 +34,7 @@
 
         /* Diseño del botón rosa */
         .btn-rosa {
-            background-color: #ff66b2; /* Rosa llamativo */
+            background-color: #ff66b2;
             color: white;
             border: none;
             padding: 15px 40px;
@@ -56,10 +56,27 @@
             display: none; 
         }
 
-        /* Espacio para la lista de canciones */
+        /* Estilo para que la lista de canciones se vea moderna */
         #lista-canciones {
-            font-size: 1.2rem;
-            line-height: 1.8;
+            font-size: 1.3rem;
+            line-height: 1.5;
+            list-style-type: none; /* Quita los puntos por defecto */
+            padding: 0;
+        }
+
+        /* Diseño de cada canción individual */
+        #lista-canciones li {
+            margin: 8px 0;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 15px;
+            transition: transform 0.2s;
+        }
+
+        /* Efecto al pasar el mouse por cada canción */
+        #lista-canciones li:hover {
+            transform: scale(1.05);
+            background-color: rgba(255, 255, 255, 0.2);
         }
     </style>
 </head>
@@ -74,10 +91,18 @@
     <!-- SEGUNDA PANTALLA (Aparece al dar clic) -->
     <div id="pagina2">
         <h2>canciones que me recuerdan a ti</h2>
-        <div id="lista-canciones">
-            <!-- Aquí agregaremos las canciones más adelante -->
-            <p><em>(Aquí irá la música)</em></p>
-        </div>
+        <ul id="lista-canciones">
+            <li>🎵 Qué Nivel de Mujer</li>
+            <li>🎵 Suave</li>
+            <li>🎵 Tu Mirada</li>
+            <li>🎵 Eres</li>
+            <li>🎵 Mujer de Fuego</li>
+            <li>🎵 Luz de Luna</li>
+            <li>🎵 O Tú o Ninguna</li>
+            <li>🎵 Sol, Arena y Mar</li>
+            <li>🎵 Amarte es un Placer</li>
+            <li>🎵 Cuestión de Piel</li>
+        </ul>
     </div>
 
     <!-- Script para hacer funcionar el botón -->
