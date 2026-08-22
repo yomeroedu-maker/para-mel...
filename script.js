@@ -1,5 +1,5 @@
 /* =========================================
-   PARA MEL - REPRODUCTOR
+   PARA MEL - SPOTIFY
 ========================================= */
 
 
@@ -12,102 +12,79 @@ const pagina2 = document.getElementById("pagina2");
 
 const btnSiguiente = document.getElementById("btnSiguiente");
 
-const audio = document.getElementById("audio");
-
-const btnPlay = document.getElementById("btnPlay");
-const btnAnterior = document.getElementById("btnAnterior");
-const btnSiguienteCancion = document.getElementById("btnSiguienteCancion");
-
-const nombreCancion = document.getElementById("nombreCancion");
-
-const barraProgreso = document.getElementById("barraProgreso");
-
-const tiempoActual = document.getElementById("tiempoActual");
-const duracion = document.getElementById("duracion");
-
-const volumen = document.getElementById("volumen");
+const spotifyPlayer = document.getElementById("spotifyPlayer");
 
 const cancionesHTML = document.querySelectorAll(".cancion");
 
 
 /* =========================================
-   LISTA DE CANCIONES
+   CANCIONES DE SPOTIFY
 ========================================= */
-
-/*
-   IMPORTANTE:
-
-   Los nombres de los archivos .mp3 deben coincidir
-   EXACTAMENTE con los que tengas dentro de la carpeta
-   "music".
-*/
 
 const canciones = [
 
     {
         nombre: "Qué Nivel de Mujer",
-        archivo: "music/que-nivel-de-mujer.mp3"
+        id: "4yakD6EKEjeMezENNCSlcc"
     },
 
     {
         nombre: "Suave",
-        archivo: "music/suave.mp3"
+        id: "4p7XH4NhQ25iGYrrbg93gt"
     },
 
     {
         nombre: "Tu Mirada",
-        archivo: "music/tu-mirada.mp3"
+        id: "3PlhEGoFWvQpPtCycG8xpr"
     },
 
     {
         nombre: "Eres",
-        archivo: "music/eres.mp3"
+        id: "1yJUzwqF3PRiQ0KEDy4kYc"
     },
 
     {
         nombre: "Mujer de Fuego",
-        archivo: "music/mujer-de-fuego.mp3"
+        id: "4LZK9BGNf7M6N4nBbxYxVd"
     },
 
     {
         nombre: "Luz de Luna",
-        archivo: "music/luz-de-luna.mp3"
+        id: "5MALTxghQ66hGWdl1lsGmB"
     },
 
     {
         nombre: "O Tú o Ninguna",
-        archivo: "music/o-tu-o-ninguna.mp3"
+        id: "7u5wdRqlAC4qeRp47e7hce"
     },
 
     {
         nombre: "Sol, Arena y Mar",
-        archivo: "music/sol-arena-y-mar.mp3"
+        id: "3pJlTmnEjkf1u9Bualfo8X"
     },
 
     {
         nombre: "Amarte es un Placer",
-        archivo: "music/amarte-es-un-placer.mp3"
+        id: "4lQWZGUrquRfH9se6nlmp3"
     },
 
     {
         nombre: "Cuestión de Piel",
-        archivo: "music/cuestion-de-piel.mp3"
+        id: "1PdgPj8tdE2OAhH40J4f4g"
     }
 
 ];
 
 
 /* =========================================
-   VARIABLES
+   VARIABLE ACTUAL
 ========================================= */
 
 let indiceActual = 0;
 
-let reproduciendo = false;
-
 
 /* =========================================
-   BOTÓN "SIGUIENTE"
+   BOTÓN SIGUIENTE
 ========================================= */
 
 btnSiguiente.addEventListener("click", () => {
@@ -124,32 +101,24 @@ btnSiguiente.addEventListener("click", () => {
 
 
 /* =========================================
-   CARGAR CANCIÓN
+   CARGAR CANCIÓN DE SPOTIFY
 ========================================= */
 
 function cargarCancion(indice) {
 
     const cancion = canciones[indice];
 
-    nombreCancion.textContent = cancion.nombre;
-
-    audio.src = cancion.archivo;
-
-    audio.load();
+    spotifyPlayer.src =
+        "https://open.spotify.com/embed/track/" +
+        cancion.id;
 
     actualizarCancionActiva();
-
-    barraProgreso.value = 0;
-
-    tiempoActual.textContent = "0:00";
-
-    duracion.textContent = "0:00";
 
 }
 
 
 /* =========================================
-   ACTUALIZAR CANCIÓN SELECCIONADA
+   ACTUALIZAR LISTA
 ========================================= */
 
 function actualizarCancionActiva() {
@@ -172,120 +141,7 @@ function actualizarCancionActiva() {
 
 
 /* =========================================
-   PLAY / PAUSA
-========================================= */
-
-btnPlay.addEventListener("click", () => {
-
-    if (reproduciendo) {
-
-        pausarCancion();
-
-    } else {
-
-        reproducirCancion();
-
-    }
-
-});
-
-
-/* =========================================
-   REPRODUCIR
-========================================= */
-
-function reproducirCancion() {
-
-    audio.play()
-        .then(() => {
-
-            reproduciendo = true;
-
-            btnPlay.textContent = "❚❚";
-
-        })
-        .catch(() => {
-
-            console.log(
-                "No se pudo reproducir la canción."
-            );
-
-        });
-
-}
-
-
-/* =========================================
-   PAUSAR
-========================================= */
-
-function pausarCancion() {
-
-    audio.pause();
-
-    reproduciendo = false;
-
-    btnPlay.textContent = "▶";
-
-}
-
-
-/* =========================================
-   SIGUIENTE CANCIÓN
-========================================= */
-
-function siguienteCancion() {
-
-    indiceActual++;
-
-    if (indiceActual >= canciones.length) {
-
-        indiceActual = 0;
-
-    }
-
-    cargarCancion(indiceActual);
-
-    reproducirCancion();
-
-}
-
-
-btnSiguienteCancion.addEventListener(
-    "click",
-    siguienteCancion
-);
-
-
-/* =========================================
-   CANCIÓN ANTERIOR
-========================================= */
-
-function anteriorCancion() {
-
-    indiceActual--;
-
-    if (indiceActual < 0) {
-
-        indiceActual = canciones.length - 1;
-
-    }
-
-    cargarCancion(indiceActual);
-
-    reproducirCancion();
-
-}
-
-
-btnAnterior.addEventListener(
-    "click",
-    anteriorCancion
-);
-
-
-/* =========================================
-   SELECCIONAR CANCIÓN DE LA LISTA
+   SELECCIONAR CANCIÓN
 ========================================= */
 
 cancionesHTML.forEach((cancion, indice) => {
@@ -296,120 +152,9 @@ cancionesHTML.forEach((cancion, indice) => {
 
         cargarCancion(indiceActual);
 
-        reproducirCancion();
-
     });
 
 });
-
-
-/* =========================================
-   ACTUALIZAR BARRA DE PROGRESO
-========================================= */
-
-audio.addEventListener("timeupdate", () => {
-
-    if (!audio.duration) {
-        return;
-    }
-
-    const porcentaje =
-        (audio.currentTime / audio.duration) * 100;
-
-    barraProgreso.value = porcentaje;
-
-    tiempoActual.textContent =
-        convertirTiempo(audio.currentTime);
-
-});
-
-
-/* =========================================
-   CUANDO SE CARGA LA DURACIÓN
-========================================= */
-
-audio.addEventListener("loadedmetadata", () => {
-
-    duracion.textContent =
-        convertirTiempo(audio.duration);
-
-});
-
-
-/* =========================================
-   MOVER LA BARRA MANUALMENTE
-========================================= */
-
-barraProgreso.addEventListener("input", () => {
-
-    if (!audio.duration) {
-        return;
-    }
-
-    const nuevoTiempo =
-        (barraProgreso.value / 100) * audio.duration;
-
-    audio.currentTime = nuevoTiempo;
-
-});
-
-
-/* =========================================
-   VOLUMEN
-========================================= */
-
-volumen.addEventListener("input", () => {
-
-    audio.volume = volumen.value;
-
-});
-
-
-/* =========================================
-   CUANDO TERMINA UNA CANCIÓN
-========================================= */
-
-audio.addEventListener("ended", () => {
-
-    siguienteCancion();
-
-});
-
-
-/* =========================================
-   CONVERTIR SEGUNDOS A 0:00
-========================================= */
-
-function convertirTiempo(segundos) {
-
-    if (isNaN(segundos)) {
-
-        return "0:00";
-
-    }
-
-    const minutos =
-        Math.floor(segundos / 60);
-
-    const segundosRestantes =
-        Math.floor(segundos % 60);
-
-    return (
-        minutos +
-        ":" +
-        segundosRestantes
-            .toString()
-            .padStart(2, "0")
-    );
-
-}
-
-
-/* =========================================
-   VOLUMEN INICIAL
-========================================= */
-
-audio.volume = 0.8;
 
 
 /* =========================================
