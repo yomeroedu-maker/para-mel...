@@ -118,15 +118,14 @@ body::before {
 }
 
 
-/* Primera onda */
+/* =========================================
+   ONDAS INDIVIDUALES
+========================================= */
 
 .onda-1 {
     top: 35%;
     transform: rotate(-4deg);
 }
-
-
-/* Segunda onda */
 
 .onda-2 {
     top: 43%;
@@ -137,9 +136,6 @@ body::before {
     animation-duration: 11s;
     animation-direction: alternate-reverse;
 }
-
-
-/* Tercera onda */
 
 .onda-3 {
     top: 51%;
@@ -177,8 +173,16 @@ body::before {
     inset: 0;
 
     background-image:
-        radial-gradient(circle, rgba(255,255,255,0.65) 1px, transparent 1px),
-        radial-gradient(circle, rgba(255,210,150,0.45) 1px, transparent 1px);
+        radial-gradient(
+            circle,
+            rgba(255,255,255,0.65) 1px,
+            transparent 1px
+        ),
+        radial-gradient(
+            circle,
+            rgba(255,210,150,0.45) 1px,
+            transparent 1px
+        );
 
     background-size:
         150px 130px,
@@ -266,7 +270,7 @@ body::before {
 
 
 /* =========================================
-   "TE AMO MEL"
+   TE AMO MEL
 ========================================= */
 
 .contenido-inicial h1 {
@@ -385,6 +389,8 @@ body::before {
     align-items: center;
 
     justify-content: center;
+
+    overflow: hidden;
 }
 
 
@@ -421,25 +427,25 @@ body::before {
 
 
 /* =========================================
-   REPRODUCTOR
+   REPRODUCTOR SPOTIFY
 ========================================= */
 
-.reproductor {
+.spotify-reproductor {
 
-    width: min(520px, 95%);
+    width: min(650px, 95%);
 
-    padding: 20px 25px;
+    padding: 8px;
 
-    border-radius: 15px;
+    border-radius: 18px;
 
     background:
         linear-gradient(
             135deg,
-            rgba(255,255,255,0.13),
-            rgba(255,255,255,0.04)
+            rgba(255,255,255,0.10),
+            rgba(255,255,255,0.03)
         );
 
-    border: 1px solid rgba(255,255,255,0.20);
+    border: 1px solid rgba(255,255,255,0.18);
 
     backdrop-filter: blur(12px);
 
@@ -447,281 +453,37 @@ body::before {
 
     box-shadow:
         0 15px 40px rgba(0,0,0,0.45),
-        0 0 30px rgba(255,0,90,0.10);
+        0 0 35px rgba(255,0,90,0.12);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 
-/* =========================================
-   INFORMACIÓN DE CANCIÓN
-========================================= */
+.spotify-reproductor:hover {
 
-.informacion-cancion {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 15px;
-
-    margin-bottom: 15px;
-}
-
-
-.icono-musica {
-
-    width: 48px;
-    height: 48px;
-
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
-
-    border-radius: 50%;
-
-    background:
-        linear-gradient(
-            135deg,
-            #e00060,
-            #650035
-        );
-
-    color: #ffe1bd;
-
-    font-size: 1.7rem;
+    transform: translateY(-3px);
 
     box-shadow:
-        0 0 15px rgba(255,0,90,0.5);
+        0 18px 45px rgba(0,0,0,0.5),
+        0 0 45px rgba(255,0,90,0.20);
 }
 
 
-.datos-cancion {
+.spotify-reproductor iframe {
 
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: flex-start;
-
-    text-align: left;
-}
-
-
-#nombreCancion {
-
-    color: #ffe3c1;
-
-    font-size: 1.35rem;
-
-    font-weight: 600;
-}
-
-
-.datos-cancion small {
-
-    color: rgba(255,255,255,0.55);
-
-    font-size: 0.9rem;
-
-    margin-top: 2px;
-}
-
-
-/* =========================================
-   PROGRESO
-========================================= */
-
-.progreso-contenedor {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 8px;
+    display: block;
 
     width: 100%;
 
-    margin: 10px 0;
-}
-
-
-.progreso-contenedor span {
-
-    min-width: 32px;
-
-    color: rgba(255,255,255,0.6);
-
-    font-size: 0.75rem;
-}
-
-
-/* =========================================
-   SLIDERS
-========================================= */
-
-input[type="range"] {
-
-    appearance: none;
-
-    -webkit-appearance: none;
-
-    height: 4px;
-
-    flex: 1;
-
-    border-radius: 10px;
-
-    background: rgba(255,255,255,0.22);
-
-    cursor: pointer;
-}
-
-
-input[type="range"]::-webkit-slider-thumb {
-
-    appearance: none;
-
-    -webkit-appearance: none;
-
-    width: 12px;
-    height: 12px;
-
-    border-radius: 50%;
-
-    background: #ffd8a9;
-
-    box-shadow:
-        0 0 10px rgba(255,210,150,0.8);
-
-    cursor: pointer;
-}
-
-
-input[type="range"]::-moz-range-thumb {
-
-    width: 12px;
-    height: 12px;
+    height: 352px;
 
     border: none;
 
-    border-radius: 50%;
-
-    background: #ffd8a9;
-
-    cursor: pointer;
-}
-
-
-/* =========================================
-   CONTROLES
-========================================= */
-
-.controles {
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    gap: 25px;
-
-    margin-top: 8px;
-}
-
-
-.control,
-.btn-play {
-
-    border: none;
-
-    background: transparent;
-
-    color: #f8ddbd;
-
-    cursor: pointer;
-
-    transition:
-        transform 0.2s ease,
-        color 0.2s ease;
-}
-
-
-.control {
-
-    font-size: 1.25rem;
-}
-
-
-.btn-play {
-
-    width: 48px;
-    height: 48px;
-
-    border-radius: 50%;
-
-    background:
-        linear-gradient(
-            135deg,
-            #e60063,
-            #a40049
-        );
-
-    font-size: 1.1rem;
-
-    box-shadow:
-        0 0 15px rgba(255,0,100,0.5);
-}
-
-
-.control:hover {
-
-    color: #ff9ac4;
-
-    transform: scale(1.15);
-}
-
-
-.btn-play:hover {
-
-    transform: scale(1.1);
-
-    box-shadow:
-        0 0 25px rgba(255,0,100,0.75);
-}
-
-
-/* =========================================
-   VOLUMEN
-========================================= */
-
-.volumen {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: flex-end;
-
-    gap: 8px;
-
-    margin-top: 12px;
-}
-
-
-.volumen span {
-
-    font-size: 0.85rem;
-
-    opacity: 0.7;
-}
-
-
-.volumen input {
-
-    width: 90px;
-
-    flex: none;
+    border-radius: 12px;
 }
 
 
@@ -731,7 +493,7 @@ input[type="range"]::-moz-range-thumb {
 
 .lista-contenedor {
 
-    width: min(520px, 95%);
+    width: min(650px, 95%);
 
     margin-top: 15px;
 
@@ -841,10 +603,34 @@ input[type="range"]::-moz-range-thumb {
 
 
 /* =========================================
+   EFECTO DE SELECCIÓN
+========================================= */
+
+.cancion.activa .numero {
+
+    color: #ff75a9;
+
+    font-weight: 600;
+}
+
+
+/* =========================================
    RESPONSIVE - CELULAR
 ========================================= */
 
 @media (max-width: 600px) {
+
+    body {
+        overflow: hidden;
+    }
+
+
+    .contenido-inicial {
+
+        padding: 20px;
+
+    }
+
 
     .contenido-inicial h1 {
 
@@ -867,6 +653,10 @@ input[type="range"]::-moz-range-thumb {
         width: 94%;
 
         max-height: 94vh;
+
+        justify-content: flex-start;
+
+        padding-top: 25px;
 
     }
 
@@ -891,25 +681,33 @@ input[type="range"]::-moz-range-thumb {
     }
 
 
-    .reproductor {
+    .spotify-reproductor {
 
-        padding: 16px;
+        width: 100%;
 
-        border-radius: 13px;
+        padding: 5px;
+
+        border-radius: 15px;
 
     }
 
 
-    #nombreCancion {
+    .spotify-reproductor iframe {
 
-        font-size: 1.15rem;
+        height: 352px;
+
+        border-radius: 10px;
 
     }
 
 
     .lista-contenedor {
 
-        max-height: 210px;
+        width: 100%;
+
+        max-height: 190px;
+
+        margin-top: 12px;
 
     }
 
@@ -935,28 +733,42 @@ input[type="range"]::-moz-range-thumb {
 
 
 /* =========================================
-   CELULARES PEQUEÑOS
+   CELULARES MUY PEQUEÑOS
 ========================================= */
 
-@media (max-height: 650px) {
+@media (max-height: 700px) {
+
+    .contenido-musica {
+
+        padding-top: 10px;
+
+    }
+
 
     .contenido-musica h2 {
 
-        font-size: 2.5rem;
+        font-size: 2.4rem;
+
+    }
+
+
+    .subtitulo {
+
+        margin-bottom: 8px;
+
+    }
+
+
+    .spotify-reproductor iframe {
+
+        height: 300px;
 
     }
 
 
     .lista-contenedor {
 
-        max-height: 150px;
-
-    }
-
-
-    .reproductor {
-
-        padding: 12px 16px;
+        max-height: 130px;
 
     }
 
