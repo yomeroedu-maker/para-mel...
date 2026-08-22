@@ -3,116 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Para Mel</title>
-    <style>
-        /* Diseño del fondo y texto general */
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            /* Degradado de negro a un rojo oscuro y luego morado */
-            background: linear-gradient(135deg, #000000 30%, #5c0000 70%, #300052 100%);
-            color: white;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
 
-        /* Estilos del texto principal */
-        h1 {
-            font-size: 4rem;
-            margin-bottom: 10px;
-        }
+    <link rel="stylesheet" href="style.css">
 
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        /* Diseño del botón rosa */
-        .btn-rosa {
-            background-color: #ff66b2;
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            font-size: 1.5rem;
-            border-radius: 30px;
-            cursor: pointer;
-            margin-top: 20px;
-            transition: transform 0.2s, background-color 0.2s;
-        }
-
-        /* Efecto al pasar el mouse sobre el botón */
-        .btn-rosa:hover {
-            transform: scale(1.1);
-            background-color: #ff4d99;
-        }
-
-        /* Ocultar la segunda página al inicio */
-        #pagina2 {
-            display: none; 
-        }
-
-        /* Estilo para que la lista de canciones se vea moderna */
-        #lista-canciones {
-            font-size: 1.3rem;
-            line-height: 1.5;
-            list-style-type: none; /* Quita los puntos por defecto */
-            padding: 0;
-        }
-
-        /* Diseño de cada canción individual */
-        #lista-canciones li {
-            margin: 8px 0;
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 10px 20px;
-            border-radius: 15px;
-            transition: transform 0.2s;
-        }
-
-        /* Efecto al pasar el mouse por cada canción */
-        #lista-canciones li:hover {
-            transform: scale(1.05);
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
+    <!-- FONDO -->
+    <div class="fondo">
+        <div class="onda onda-1"></div>
+        <div class="onda onda-2"></div>
+        <div class="onda onda-3"></div>
+
+        <div class="particulas"></div>
+    </div>
+
+
+    <!-- ========================= -->
     <!-- PRIMERA PANTALLA -->
-    <div id="pagina1">
-        <h1>te amo mel</h1>
-        <button class="btn-rosa" onclick="cambiarPagina()">siguiente</button>
-    </div>
+    <!-- ========================= -->
 
-    <!-- SEGUNDA PANTALLA (Aparece al dar clic) -->
-    <div id="pagina2">
-        <h2>canciones que me recuerdan a ti</h2>
-        <ul id="lista-canciones">
-            <li>🎵 Qué Nivel de Mujer</li>
-            <li>🎵 Suave</li>
-            <li>🎵 Tu Mirada</li>
-            <li>🎵 Eres</li>
-            <li>🎵 Mujer de Fuego</li>
-            <li>🎵 Luz de Luna</li>
-            <li>🎵 O Tú o Ninguna</li>
-            <li>🎵 Sol, Arena y Mar</li>
-            <li>🎵 Amarte es un Placer</li>
-            <li>🎵 Cuestión de Piel</li>
-        </ul>
-    </div>
+    <main id="pagina1" class="pantalla activa">
 
-    <!-- Script para hacer funcionar el botón -->
-    <script>
-        function cambiarPagina() {
-            // Oculta la página 1
-            document.getElementById('pagina1').style.display = 'none';
-            // Muestra la página 2
-            document.getElementById('pagina2').style.display = 'block';
-        }
-    </script>
+        <div class="contenido-inicial">
+
+            <h1>te amo mel</h1>
+
+            <button id="btnSiguiente" class="btn-siguiente">
+                siguiente
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <!-- ========================= -->
+    <!-- SEGUNDA PANTALLA -->
+    <!-- ========================= -->
+
+    <main id="pagina2" class="pantalla">
+
+        <div class="contenido-musica">
+
+            <h2>canciones que me recuerdan a ti</h2>
+
+            <p class="subtitulo">
+                cada canción me hace pensar en ti
+            </p>
+
+
+            <!-- REPRODUCTOR -->
+
+            <div class="reproductor">
+
+                <div class="informacion-cancion">
+
+                    <div class="icono-musica">
+                        ♪
+                    </div>
+
+                    <div class="datos-cancion">
+
+                        <span id="nombreCancion">
+                            Qué Nivel de Mujer
+                        </span>
+
+                        <small>
+                            Luis Miguel
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BARRA DE PROGRESO -->
+
+                <div class="progreso-contenedor">
+
+                    <span id="tiempoActual">
+                        0:00
+                    </span>
+
+                    <input
+                        type="range"
+                        id="barraProgreso"
+                        value="0"
+                        min="0"
+                        max="100"
+                    >
+
+                    <span id="duracion">
+                        0:00
+                    </span>
+
+                </div>
+
+
+                <!-- CONTROLES -->
+
+                <div class="controles">
+
+                    <button id="btnAnterior" class="control">
+                        ⏮
+                    </button>
+
+                    <button id="btnPlay" class="btn-play">
+                        ▶
+                    </button>
+
+                    <button id="btnSiguienteCancion" class="control">
+                        ⏭
+                    </button>
+
+                </div>
+
+
+                <!-- VOLUMEN -->
+
+                <div class="volumen">
+
+                    <span>
+                        🔊
+                    </span>
+
+                    <input
+                        type="range"
+                        id="volumen"
+                        min="0"
+                        max="1"
+                        step="0.01"
+                        value="0.8"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- LISTA DE CANCIONES -->
+
+            <div class="lista-contenedor">
+
+                <ul id="lista-canciones">
+
+                    <li class="cancion activa" data-index="0">
+                        <span class="numero">01</span>
+                        <span>Qué Nivel de Mujer</span>
+                    </li>
+
+                    <li class="cancion" data-index="1">
+                        <span class="numero">02</span>
+                        <span>Suave</span>
+                    </li>
+
+                    <li class="cancion" data-index="2">
+                        <span class="numero">03</span>
+                        <span>Tu Mirada</span>
+                    </li>
+
+                    <li class="cancion" data-index="3">
+                        <span class="numero">04</span>
+                        <span>Eres</span>
+                    </li>
+
+                    <li class="cancion" data-index="4">
+                        <span class="numero">05</span>
+                        <span>Mujer de Fuego</span>
+                    </li>
+
+                    <li class="cancion" data-index="5">
+                        <span class="numero">06</span>
+                        <span>Luz de Luna</span>
+                    </li>
+
+                    <li class="cancion" data-index="6">
+                        <span class="numero">07</span>
+                        <span>O Tú o Ninguna</span>
+                    </li>
+
+                    <li class="cancion" data-index="7">
+                        <span class="numero">08</span>
+                        <span>Sol, Arena y Mar</span>
+                    </li>
+
+                    <li class="cancion" data-index="8">
+                        <span class="numero">09</span>
+                        <span>Amarte es un Placer</span>
+                    </li>
+
+                    <li class="cancion" data-index="9">
+                        <span class="numero">10</span>
+                        <span>Cuestión de Piel</span>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- AUDIO -->
+
+    <audio id="audio"></audio>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
 </body>
 </html>
